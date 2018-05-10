@@ -56,28 +56,20 @@ public class ActivityTeste extends AppCompatActivity {
  
         referenciaFirebase.child("produtos").orderByChild("nomePrato").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
- 
+            public void onDataChange(DataSnapshot dataSnapshot) { 
  
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
  
                     todosProdutosJuntos = postSnapshot.getValue(Cardapio.class); 
-                    extrabom.add(todosProdutosJuntos);
- 
-                }
- 
+                    extrabom.add(todosProdutosJuntos); 
+                } 
                 adaptador.notifyDataSetChanged();
             }
  
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
- 
-            }
+            @Override public void onCancelled(DatabaseError databaseError) {}
         });       
  
         mRecyclerViewProdutos.setAdapter(adaptador);
- 
- 
  
     }
 }
